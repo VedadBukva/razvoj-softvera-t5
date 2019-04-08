@@ -1,4 +1,4 @@
-package sample;
+package ba.unsa.etf.rs.tut5;
 
 import javafx.beans.property.SimpleStringProperty;
 

@@ -1,4 +1,4 @@
-package sample;
+package ba.unsa.etf.rs.tut5;
 
 import javafx.beans.property.SimpleObjectProperty;
 
@@ -32,7 +32,7 @@ public class KorisniciModel {
 
     void napuni (){
         korisnik.add(new Korisnik( "Vedad" , "Bukva" , " vbukva1@etf.unsa.ba" , "vbukva1", "password"));
-        korisnik.add(new Korisnik( "Tarik" , "Sijarcic" , " tsijarcic1@etf.unsa.ba" , "tare", "passw"));
+        korisnik.add(new Korisnik( "Tarik" , "Sijarcic" , " tsijarcic1@etf.unsa.ba" , "tsijercic1", "lozinka"));
     }
 
 }
