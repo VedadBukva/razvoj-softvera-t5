@@ -4,11 +4,11 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Korisnik {
 
-    private SimpleStringProperty ime;
-    private SimpleStringProperty prezime;
-    private SimpleStringProperty mail;
-    private SimpleStringProperty korisnickoIme;
-    private SimpleStringProperty lozinka;
+    private SimpleStringProperty ime = new SimpleStringProperty("");
+    private SimpleStringProperty prezime = new SimpleStringProperty("");
+    private SimpleStringProperty mail = new SimpleStringProperty("");
+    private SimpleStringProperty korisnickoIme = new SimpleStringProperty("");
+    private SimpleStringProperty lozinka = new SimpleStringProperty("");
 
     public String getIme() {
         return ime.get();
