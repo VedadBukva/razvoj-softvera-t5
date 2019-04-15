@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 
 public class KorisniciModel {
     private ObservableList<Korisnik> korisnik = FXCollections.observableArrayList();
-    private SimpleObjectProperty<Korisnik> trenutniKorisnik = new SimpleObjectProperty<Korisnik>();
+    private SimpleObjectProperty<Korisnik> trenutniKorisnik = new SimpleObjectProperty<>();
 
     public ObservableList<Korisnik> getKorisnik() {
         return korisnik;
@@ -27,7 +27,7 @@ public class KorisniciModel {
     }
 
     public void setTrenutniKorisnik(Korisnik trenutniKorisnik) {
-        this.trenutniKorisnik.set((Korisnik) trenutniKorisnik);
+        this.trenutniKorisnik.set(trenutniKorisnik);
     }
 
     public void dodajKorisnika() {
@@ -37,6 +37,6 @@ public class KorisniciModel {
     void napuni (){
         korisnik.add(new Korisnik( "Vedad" , "Bukva" , " vbukva1@etf.unsa.ba" , "vbukva1", "password"));
         korisnik.add(new Korisnik( "Tarik" , "Sijarcic" , " tsijarcic1@etf.unsa.ba" , "tsijercic1", "lozinka"));
+        korisnik.add(new Korisnik());
     }
-
 }

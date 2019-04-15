@@ -2,19 +2,14 @@ package ba.unsa.etf.rs.tut5;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-
 public class KorisnikController {
 
-    public ListView      lista;
+    public ListView<Korisnik> lista;
     public TextField fldIme;
     public TextField fldPrezime;
     public TextField fldMail;
@@ -32,8 +27,8 @@ public class KorisnikController {
 
     @FXML
     public void zatvori(ActionEvent actionEvent) {
-        Node n = (Node) actionEvent.getSource();
-        Stage stage = (Stage) n.getScene().getWindow();
+        //Node n = (Node) actionEvent.getSource();
+        Stage stage = (Stage) kraj.getScene().getWindow();
         stage.close();
     }
 
@@ -70,15 +65,16 @@ public class KorisnikController {
         lista.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Korisnik>() {
             @Override
             public void changed(ObservableValue<? extends Korisnik> observableValue, Korisnik stariKorisnik, Korisnik noviKorisnik) {
-                if(stariKorisnik!=null) {
+                if(stariKorisnik != null) {
                     odvezivanje();
                 }
                 if (noviKorisnik == null) {
-                    fldIme.setText("");
+                    odvezivanje();
+                    /*fldIme.setText("");
                     fldPrezime.setText("");
                     fldMail.setText("");
                     fldNik.setText("");
-                    fldLozinka.setText("");
+                    fldLozinka.setText("");*/
                 }
                 else {
                     Korisnik korisnik =  (Korisnik) lista.getSelectionModel().getSelectedItem();
