@@ -36,29 +36,35 @@ class KorisnikControllerTest {
         javafx.scene.control.Button dodaj = robot.lookup("#dodaj").queryAs(Button.class);
         assertNotNull(dodaj);
         robot.clickOn("Tarik Sijarcic");
+        robot.clickOn("#fldNik");
+        try {
+            Thread.sleep(1500);
+            assertNotEquals("vedadbukva", "tsijercic1");
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
         robot.clickOn("#kraj");
     }
 
     @Test
     void drugiFXTest(FxRobot robot) {
         Button dodaj = robot.lookup("#dodaj").queryAs(Button.class);
-        TextField fldIme = robot.lookup("#fldIme").queryAs(TextField.class);
         assertNotNull(dodaj);
-        robot.clickOn(dodaj);
+        robot.clickOn(" ");
         robot.clickOn("#fldIme");
-        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        //robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
         robot.write("Test");
         robot.clickOn("#fldPrezime");
-        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        //robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
         robot.write("FXRobot");
         robot.clickOn("#fldMail");
-        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        //robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
         robot.write("test@javafx.robot");
         robot.clickOn("#fldNik");
-        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        //robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
         robot.write("robotic");
         robot.clickOn("#fldLozinka");
-        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        //robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
         robot.write("sifra");
         robot.clickOn(dodaj);
         try{
@@ -85,4 +91,28 @@ class KorisnikControllerTest {
 
     }
 
+    @Test
+    void noviKorisnik(FxRobot robot) {
+        Button dodaj = robot.lookup("#dodaj").queryAs(Button.class);
+        robot.clickOn(dodaj);
+        robot.clickOn("Vedad Bukva");
+        robot.clickOn("#fldIme");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.write("Test");
+        robot.clickOn("#fldPrezime");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.write("FXRobot");
+        robot.clickOn("#fldMail");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.write("test@javafx.robot");
+        robot.clickOn("#fldNik");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.write("robotic");
+        robot.clickOn("#fldLozinka");
+        robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
+        robot.write("sifra");
+        robot.clickOn(dodaj);
+
+        robot.clickOn("#kraj");
+    }
 }

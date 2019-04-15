@@ -3,27 +3,35 @@ package ba.unsa.etf.rs.tut5;
 import com.sun.javafx.binding.BidirectionalBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class KorisniciModelTest {
+    private static KorisniciModel m = null;
+
     private static final String OCEKIVANO_IME = "Ahmo";
     private static final String OCEKIVANO_PREZIME = "Ahmic";
     private static final String OCEKIVANI_MAIL = "Ahmed@gmail.com";
     private static final String OCEKIVANO_KORISNICKO_IME = "Ahmedinho";
     private static final String OCEKIVANA_LOZINKA = "abcd";
 
+    @BeforeAll
+    static void setup() {
+        m = new KorisniciModel();
+        m.napuni();
+    }
+
     @Test
     void getKorisnik() {
-        KorisniciModel m = new KorisniciModel();
-        m.napuni();
-        assertNull(m.getTrenutniKorisnik());
+        m.dodajKorisnika();
+        assertEquals(4, m.getKorisnik().size());
     }
 
     @Test
     void setKorisnik() {
-        Korisnik korisnik = new Korisnik();
+        /*Korisnik korisnik = new Korisnik();
         korisnik.setIme(OCEKIVANO_IME);
         korisnik.setPrezime(OCEKIVANO_PREZIME);
         korisnik.setMail(OCEKIVANI_MAIL);
@@ -35,12 +43,11 @@ class KorisniciModelTest {
                 () -> assertEquals(OCEKIVANI_MAIL,korisnik.getMail()),
                 () -> assertEquals(OCEKIVANO_KORISNICKO_IME,korisnik.getKorisnickoIme()),
                 () -> assertEquals(OCEKIVANA_LOZINKA,korisnik.getLozinka())
-        );
+        );*/
     }
 
     @Test
     void getTrenutniKorisnik() {
-        KorisniciModel m = new KorisniciModel();
         Korisnik korisnik = new Korisnik();
         korisnik.setIme(OCEKIVANO_IME);
         korisnik.setPrezime(OCEKIVANO_PREZIME);
@@ -48,21 +55,16 @@ class KorisniciModelTest {
         korisnik.setKorisnickoIme(OCEKIVANO_KORISNICKO_IME);
         korisnik.setLozinka(OCEKIVANA_LOZINKA);
         m.setTrenutniKorisnik(korisnik);
-        assertNotEquals("Rukfas",korisnik.getIme());
+        assertEquals(korisnik,m.getTrenutniKorisnik());
     }
 
     @Test
     void trenutniKorisnikProperty() {
-        KorisniciModel m = new KorisniciModel();
-        m.napuni();
-        m.setTrenutniKorisnik(m.getKorisnik().get(0));
-        assertEquals("Vedad",m.getTrenutniKorisnik().getIme());
+
     }
 
     @Test
     void setTrenutniKorisnik() {
-        KorisniciModel m = new KorisniciModel();
-        m.napuni();
         Korisnik korisnik = new Korisnik();
         korisnik.setIme(OCEKIVANO_IME);
         korisnik.setPrezime(OCEKIVANO_PREZIME);
@@ -70,11 +72,16 @@ class KorisniciModelTest {
         korisnik.setKorisnickoIme(OCEKIVANO_KORISNICKO_IME);
         korisnik.setLozinka(OCEKIVANA_LOZINKA);
         m.setTrenutniKorisnik(m.getKorisnik().get(0));
+
     }
 
     @Test
     void dodajKorisnika() {
-        Korisnik korisnik = new Korisnik();
+        ObservableList<Korisnik> x = m.getKorisnik();
+        x.add(new Korisnik("Hara", "Mali", "hahah@haha.com", "sada", "jupi"));
+        assertNotEquals(7,m.getKorisnik().size());
+
+        /*Korisnik korisnik = new Korisnik();
         korisnik.setIme("Semso");
         korisnik.setPrezime("Poplava");
         korisnik.setMail("Semsudin@poplava.com");
@@ -86,12 +93,14 @@ class KorisniciModelTest {
                 () -> assertNotEquals(OCEKIVANI_MAIL,korisnik.getMail()),
                 () -> assertNotEquals(OCEKIVANO_KORISNICKO_IME,korisnik.getKorisnickoIme()),
                 () -> assertNotEquals(OCEKIVANA_LOZINKA,korisnik.getLozinka())
-        );
+        );*/
     }
 
     @Test
     void napuniListu() {
-        ObservableList<Korisnik> korisnik = FXCollections.observableArrayList();
-        KorisniciModel model = new KorisniciModel();
+        ObservableList<Korisnik> korisnik = m.getKorisnik();
+        korisnik.add(new Korisnik("Hara", "Mali", "hahah@haha.com", "sada", "jupi"));
+        assertNotEquals(4,m.getKorisnik().size());
+
     }
 }
